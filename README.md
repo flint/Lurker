@@ -1,5 +1,5 @@
-Luker
-=====
+Lurker
+======
 
 This is a continuation of Konstantin Kudryashov's ResourceWatcher for Symfony2. It have been moved
 from his fork and renamed Lurker to allow a wider adoption.
@@ -15,7 +15,7 @@ Use composer to install it by adding the following to your `composer.json` file.
 {
     "require" : {
         "henrikbjorn/lurker" : "dev-master"
-    },
+    }
 }
 ```
 
@@ -38,7 +38,7 @@ use Lurker\ResourceWatcher;
 $watcher = new ResourceWatcher;
 $watcher->track('twig.templates', '/path/to/views');
 
-$watcher->addLitener('twig.templates', function (FilesystemEvent $event) {
+$watcher->addListener('twig.templates', function (FilesystemEvent $event) {
     echo $event->getResource() . 'was' . $event->getTypeString();
 });
 
@@ -62,4 +62,4 @@ Note that `FilesystemEvent::ALL` is a special case and of course means it will w
 Special Thanks
 --------------
 
-* [Konstantin Kudryashov](http://twitter.com/everzet) for the orignal code.
+* [Konstantin Kudryashov](http://twitter.com/everzet) for the original code.
