@@ -85,8 +85,8 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Allows to set event for resource itself or for child resources.
      *
-     * @param  int    $mask
-     * @param  string $name
+     * @param int    $mask
+     * @param string $name
      */
     abstract public function setEvent($mask, $name = '');
 
@@ -144,7 +144,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Transforms inotify event to FilesystemEvent event
      *
-     * @param  int      $mask
+     * @param int $mask
      *
      * @return bool|int Returns event only if the checker supports it.
      */
@@ -171,7 +171,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Checks whether checker supports provided resource event.
      *
-     * @param  int  $event
+     * @param int $event
      *
      * @return bool
      */
@@ -193,7 +193,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a directory mask
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -205,7 +205,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a mask with a IN_DELETE bit active
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -217,7 +217,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a IN_IGNORED mask
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -229,7 +229,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a IN_MOVE_SELF mask
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -241,7 +241,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a mask with a IN_CREATE bit active
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -253,7 +253,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a mask with a IN_MOVED_FROM bit active
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */
@@ -265,7 +265,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
     /**
      * Returns true if it is a mask with a IN_MOVED_TO bit active
      *
-     * @param  int  $mask
+     * @param int $mask
      *
      * @return bool
      */

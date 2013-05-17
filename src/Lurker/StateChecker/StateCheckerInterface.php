@@ -25,12 +25,12 @@ interface StateCheckerInterface
      *
      * @return ResourceInterface
      */
-    function getResource();
+    public function getResource();
 
     /**
      * Check tracked resource for changes.
      *
      * @return array
      */
-    function getChangeset();
+    public function getChangeset();
 }

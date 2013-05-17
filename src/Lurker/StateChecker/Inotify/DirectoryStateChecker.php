@@ -243,8 +243,8 @@ class DirectoryStateChecker extends ResourceStateChecker
     /**
      * Normalizes file event
      *
-     * @param  int      $event
-     * @param  string   $name
+     * @param int    $event
+     * @param string $name
      *
      * @return null|int
      */
@@ -270,7 +270,7 @@ class DirectoryStateChecker extends ResourceStateChecker
     /**
      * Normalizes event
      *
-     * @param  int $event
+     * @param int $event
      *
      * @return int
      */

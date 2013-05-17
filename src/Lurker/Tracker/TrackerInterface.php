@@ -27,12 +27,12 @@ interface TrackerInterface
      * @param TrackedResource $resource
      * @param integer         $eventsMask event types bitmask
      */
-    function track(TrackedResource $resource, $eventsMask = FilesystemEvent::ALL);
+    public function track(TrackedResource $resource, $eventsMask = FilesystemEvent::ALL);
 
     /**
      * Checks tracked resources for change events.
      *
      * @return array change events array
      */
-    function getEvents();
+    public function getEvents();
 }
