@@ -1,5 +1,5 @@
-Luker
-=====
+Lurker
+======
 
 This is a continuation of Konstantin Kudryashov's ResourceWatcher for Symfony2. It have been moved
 from his fork and renamed Lurker to allow a wider adoption.
@@ -14,4 +14,4 @@ This should be written
 Special Thanks
 --------------
 
-* [Konstantin Kudryashov](http://twitter.com/everzet) for the orignal code.
+* [Konstantin Kudryashov](http://twitter.com/everzet) for the original code.
