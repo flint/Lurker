@@ -38,7 +38,7 @@ use Lurker\ResourceWatcher;
 $watcher = new ResourceWatcher;
 $watcher->track('twig.templates', '/path/to/views');
 
-$watcher->addLitener('twig.templates', function (FilesystemEvent $event) {
+$watcher->addListener('twig.templates', function (FilesystemEvent $event) {
     echo $event->getResource() . 'was' . $event->getTypeString();
 });
 
