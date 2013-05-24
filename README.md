@@ -14,7 +14,7 @@ Use composer to install it by adding the following to your `composer.json` file.
 ``` json
 {
     "require" : {
-        "henrikbjorn/lurker" : "dev-master"
+        "henrikbjorn/lurker" : "1.0.*@dev"
     }
 }
 ```
