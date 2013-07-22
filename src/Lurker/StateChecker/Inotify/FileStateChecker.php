@@ -59,9 +59,7 @@ class FileStateChecker extends ResourceStateChecker
     protected function handleItself()
     {
         if ($this->isMoved($this->event)) {
-            $id = $this->addWatch();
-
-            if ($this->getResource()->exists() && $id === $this->id) {
+            if ($this->getResource()->exists() && $this->addWatch() === $this->id) {
                 return;
             }
 
