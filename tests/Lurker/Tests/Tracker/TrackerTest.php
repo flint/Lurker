@@ -273,7 +273,11 @@ abstract class TrackerTest extends \PHPUnit_Framework_TestCase
             return $this->assertTrue(in_array($type, $result), sprintf('Expected event: %s, actual: %s ', $types[$type], implode(' or ', array_intersect_key($types, array_flip($result)))));
         }
 
-        $this->fail(sprintf('Can not find "%s" change event', $resource));
+        $this->fail(sprintf(
+            'Can not find "%s" %s event',
+            $resource,
+            isset($types[$type]) ? $types[$type] : 'change'
+        ));
     }
 
     protected function sleep()
