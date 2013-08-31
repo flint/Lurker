@@ -15,11 +15,11 @@ class GH3_Test extends InotifyTrackerTest
     {
         mkdir($dir = $this->tmpDir.'/test/foo', 0777, true);
         touch($this->tmpDir.'/test/foo/bar.txt');
-        $expected = [
+        $expected = array(
             //['type' => FilesystemEvent::CREATE, 'file' => $this->tmpDir.'/test/foo/bar.txt'],
-            ['type' => FilesystemEvent::DELETE, 'file' => $this->tmpDir.'/test/foo/bar.txt'],
-            ['type' => FilesystemEvent::CREATE, 'file' => $this->tmpDir.'/test/foo/bar.txt'],
-        ];
+            array('type' => FilesystemEvent::DELETE, 'file' => $this->tmpDir.'/test/foo/bar.txt'),
+            array('type' => FilesystemEvent::CREATE, 'file' => $this->tmpDir.'/test/foo/bar.txt'),
+        );
 
         $tracker = $this->getTracker();
         $tracker->track(new TrackedResource('foo', $resource = new DirectoryResource($dir)));
