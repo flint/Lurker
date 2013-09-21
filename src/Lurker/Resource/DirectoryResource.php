@@ -25,48 +25,7 @@ class DirectoryResource extends BaseDirectoryResource implements ResourceInterfa
         clearstatcache(true, $resource);
         $newestMTime = filemtime($resource);
 
-        foreach ($this->getFilteredChilds() as $file) {
-            clearstatcache(true, (string) $file);
-            $newestMTime = max($file->getMTime(), $newestMTime);
-        }
-
         return $newestMTime;
-    }
-
-    /**
-     * Returns the list of filtered file and directory childs of directory resource.
-     *
-     * @return array An array of files
-     */
-    public function getFilteredChilds()
-    {
-        if (!$this->exists()) {
-            return array();
-        }
-
-        $resource = $this->getResource();
-        $iterator = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($resource, \FilesystemIterator::SKIP_DOTS),
-            \RecursiveIteratorIterator::SELF_FIRST
-        );
-
-        $childs = array();
-        foreach ($iterator as $file) {
-            // if regex filtering is enabled only return matching files
-            if ($file->isFile() && !$this->hasFile($file)) {
-                continue;
-            }
-
-            // always monitor directories for changes, except the .. entries
-            // (otherwise deleted files wouldn't get detected)
-            if ($file->isDir() && '/..' === substr($file, -3)) {
-                continue;
-            }
-
-            $childs[] = $file;
-        }
-
-        return $childs;
     }
 
     public function isFresh($timestamp)
