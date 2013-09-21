@@ -15,11 +15,12 @@ class FileResource extends BaseFileResource implements ResourceInterface
             return -1;
         }
 
-        $resource = $this->getResource();
+        clearstatcache(true, $this->getResource());
+        if (false === $mtime = @filemtime($this->getResource())) {
+            return -1;
+        }
 
-        clearstatcache(true, $resource);
-
-        return filemtime($resource);
+        return $mtime;
     }
 
     public function getId()
@@ -38,7 +39,8 @@ class FileResource extends BaseFileResource implements ResourceInterface
 
     public function exists()
     {
+        clearstatcache(true, $this->getResource());
+
         return is_file($this);
     }
-
 }

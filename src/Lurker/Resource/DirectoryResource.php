@@ -12,6 +12,8 @@ class DirectoryResource extends BaseDirectoryResource implements ResourceInterfa
 
     public function exists()
     {
+        clearstatcache(true, $this->getResource());
+
         return is_dir($this);
     }
 
@@ -21,11 +23,12 @@ class DirectoryResource extends BaseDirectoryResource implements ResourceInterfa
             return -1;
         }
 
-        $resource = $this->getResource();
-        clearstatcache(true, $resource);
-        $newestMTime = filemtime($resource);
+        clearstatcache(true, $this->getResource());
+        if (false === $mtime = @filemtime($this->getResource())) {
+            return -1;
+        }
 
-        return $newestMTime;
+        return $mtime;
     }
 
     public function isFresh($timestamp)
@@ -65,7 +68,12 @@ class DirectoryResource extends BaseDirectoryResource implements ResourceInterfa
             return array();
         }
 
-        $iterator = new \DirectoryIterator($this->getResource());
+        // race conditions
+        try {
+            $iterator = new \DirectoryIterator($this->getResource());
+        } catch (\UnexpectedValueException $e) {
+            return array();
+        }
 
         $resources = array();
         foreach ($iterator as $file) {
