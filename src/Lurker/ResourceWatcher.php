@@ -93,7 +93,7 @@ class ResourceWatcher
                 $resource = new DirectoryResource($resource);
             } else {
                 throw new InvalidArgumentException(sprintf(
-                    'First argument to track() should be either file or directory resource, '.
+                    'Second argument to track() should be either file or directory resource, '.
                     'but got "%s"',
                     $resource
                 ));
