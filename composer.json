@@ -22,7 +22,6 @@
 
     "require" : {
         "php"                      : ">=5.3.3",
-       
         "symfony/config"           : "~2.2",
         "symfony/event-dispatcher" : "~2.2"
     },
@@ -33,7 +32,7 @@
 
     "suggest" : {
         "ext-inotify": ">=0.1.6",
-         "symfony/console"          : "~2.2"
+        "symfony/console": "~2.2"
     },
 
     "extra" : {
