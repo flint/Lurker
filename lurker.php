@@ -18,11 +18,15 @@ $console->register('track')
         ->addArgument('path')
         ->setCode(function(InputInterface $input, OutputInterface $output) {
             $config = $input->getArgument('path');
-            if ($config && !is_file($config))
-                throw new Exception('File not exists');
+            if ($config && !is_file($config)) {
+                throw new Exception('File does not exists');
+            }
 
             $watcher = require $config;
-            if(!$watcher instanceof ResourceWatcher) throw new Exception ('Given configurationfile does not retur instance of Lurker/ResrouceWatcher');
+            if (!$watcher instanceof ResourceWatcher) {
+                throw new Exception('Given configurationfile does not retur instance of Lurker/ResrouceWatcher');
+            }
+
             while (true) {
                 $output->writeln("Start watching...");
                 $watcher->start();
