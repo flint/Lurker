@@ -24,7 +24,7 @@ $console->register('track')
 
             $watcher = require $config;
             if (!$watcher instanceof ResourceWatcher) {
-                throw new Exception('Given configurationfile does not retur instance of Lurker/ResrouceWatcher');
+                throw new Exception('Given configuration file does not return instance of Lurker/ResrouceWatcher');
             }
 
             while (true) {
