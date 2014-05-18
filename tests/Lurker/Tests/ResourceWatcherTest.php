@@ -199,6 +199,9 @@ class ResourceWatcherTest extends \PHPUnit_Framework_TestCase
         $watcher->start(1,1);
     }
 
+    /**
+     * @group medium
+     */
     public function testTrackingFunctionally()
     {
         $file  = tempnam(sys_get_temp_dir(), 'sf2_resource_watcher_');

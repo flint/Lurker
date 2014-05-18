@@ -4,6 +4,9 @@ namespace Lurker\Tests\Tracker;
 
 use Lurker\Tracker\RecursiveIteratorTracker;
 
+/**
+ * @group medium
+ */
 class RecursiveIteratorTrackerTest extends TrackerTest
 {
     /**
