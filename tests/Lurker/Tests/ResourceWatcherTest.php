@@ -101,7 +101,7 @@ class ResourceWatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Lurker\Exception\InvalidArgumentException
-     * @expectedExceptionMessage First argument to track() should be either file or directory
+     * @expectedExceptionMessage Second argument to track() should be either file or directory
      * resource, but got "unexisting_something"
      */
     public function testTrackUnexistingResource()
