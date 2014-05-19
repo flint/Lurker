@@ -101,7 +101,7 @@ class ResourceWatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException Lurker\Exception\InvalidArgumentException
-     * @expectedExceptionMessage First argument to track() should be either file or directory
+     * @expectedExceptionMessage Second argument to track() should be either file or directory
      * resource, but got "unexisting_something"
      */
     public function testTrackUnexistingResource()
@@ -199,6 +199,9 @@ class ResourceWatcherTest extends \PHPUnit_Framework_TestCase
         $watcher->start(1,1);
     }
 
+    /**
+     * @group medium
+     */
     public function testTrackingFunctionally()
     {
         $file  = tempnam(sys_get_temp_dir(), 'sf2_resource_watcher_');
