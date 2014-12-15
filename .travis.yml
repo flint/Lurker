@@ -16,6 +16,6 @@ matrix:
           env: INOTIFY_EXTENSION=1
 
 before_script:
-    - "if [ \"$INOTIFY_EXTENSION\" != \"1\" ]; then pyrus install pecl/inotify && pyrus build pecl/inotify; fi"
-    - "if [ \"$INOTIFY_EXTENSION\" != \"1\" ]; then echo \"extension=inotify.so\" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi"
+    - "if [ \"$INOTIFY_EXTENSION\" = \"1\" ]; then pyrus install pecl/inotify && pyrus build pecl/inotify; fi"
+    - "if [ \"$INOTIFY_EXTENSION\" = \"1\" ]; then echo \"extension=inotify.so\" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi"
     - "composer install --no-progress"
