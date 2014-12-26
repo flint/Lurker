@@ -7,6 +7,7 @@ CHANGELOG
   * Typo and examples fixes.
   * Change DirectoryResource::getModificationTime to return the modified time of the directory itself.
   * Fix warnings and exceptions that could be thrown in some race conditions.
+  * Add `Lurker\Event\ResourceWatcherEvent` for ResourceWatcher events.
 
 1.0.0 (2013-07-04)
 ------------------

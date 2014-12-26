@@ -45,7 +45,7 @@ $watcher->addListener('twig.templates', function (FilesystemEvent $event) {
 $watcher->start();
 ```
 
-The above example would watch for all events `create`, `delete` and `modify`. This can be controlled by passing a 
+The above example would watch for all events `create`, `delete` and `modify`. This can be controlled by passing a
 third parameter to `track()`.
 
 ``` php
@@ -58,6 +58,20 @@ $watcher->track('twig.templates', '/path/to/views', FilesystemEvent::ALL);
 ```
 
 Note that `FilesystemEvent::ALL` is a special case and of course means it will watch for every type of event.
+
+### Resource Watcher events
+
+The resource watcher itslef triggers event on start, stop and period (the period
+duration is defined as the first argument of `ResourceWatcher::start` method).
+
+``` php
+<?php
+use Lurker\Event\ResourceWatcherEvent as Event;
+
+$watcher->getEventDispatcher()->addListener(Event::START, function (Event $event) { echo "resource watcher is starting\n"; });
+$watcher->getEventDispatcher()->addListener(Event::STOP, function (Event $event) { echo "resource watcher is stopping\n"; });
+$watcher->getEventDispatcher()->addListener(Event::PERIOD, function (Event $event) { echo "resource watcher has finished a period\n"; });
+```
 
 Special Thanks
 --------------

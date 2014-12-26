@@ -3,6 +3,7 @@
 namespace Lurker;
 
 use Lurker\Event\FilesystemEvent;
+use Lurker\Event\ResourceWatcherEvent;
 use Lurker\Exception\InvalidArgumentException;
 use Lurker\Resource\DirectoryResource;
 use Lurker\Resource\FileResource;
@@ -156,6 +157,7 @@ class ResourceWatcher
     {
         $totalTime = 0;
         $this->watching = true;
+        $this->getEventDispatcher()->dispatch(ResourceWatcherEvent::START, new ResourceWatcherEvent($this));
 
         while ($this->watching) {
             usleep($checkInterval);
@@ -180,9 +182,10 @@ class ResourceWatcher
                     $event
                 );
             }
+            $this->getEventDispatcher()->dispatch(ResourceWatcherEvent::PERIOD, new ResourceWatcherEvent($this));
         }
 
-        $this->watching = false;
+        $this->stop();
     }
 
     /**
@@ -191,5 +194,6 @@ class ResourceWatcher
     public function stop()
     {
         $this->watching = false;
+        $this->getEventDispatcher()->dispatch(ResourceWatcherEvent::STOP, new ResourceWatcherEvent($this));
     }
 }
