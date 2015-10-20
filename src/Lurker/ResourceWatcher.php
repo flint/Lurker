@@ -89,7 +89,7 @@ class ResourceWatcher
         if (!$resource instanceof ResourceInterface) {
             if (is_file($resource)) {
                 $resource = new FileResource($resource);
-            } elseif (is_dir($resource->getResource())) {
+            } elseif (is_dir($resource)) {
                 $resource = new DirectoryResource($resource);
             } else {
                 throw new InvalidArgumentException(sprintf(
