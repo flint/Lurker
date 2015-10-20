@@ -14,7 +14,7 @@ class DirectoryResource extends BaseDirectoryResource implements ResourceInterfa
     {
         clearstatcache(true, $this->getResource());
 
-        return is_dir($this);
+        return is_dir($this->getResource());
     }
 
     public function getModificationTime()
