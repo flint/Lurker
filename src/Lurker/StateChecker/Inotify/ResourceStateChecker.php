@@ -119,7 +119,7 @@ abstract class ResourceStateChecker implements StateCheckerInterface
      */
     protected function addWatch()
     {
-        return inotify_add_watch($this->getBag()->getInotify(), (string) $this->getResource(), $this->getInotifyEventMask());
+        return inotify_add_watch($this->getBag()->getInotify(), $this->getResource()->getResource(), $this->getInotifyEventMask());
     }
 
     /**
