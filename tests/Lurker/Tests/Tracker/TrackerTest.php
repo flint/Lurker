@@ -258,7 +258,7 @@ abstract class TrackerTest extends \PHPUnit_Framework_TestCase
     {
         $result = array();
         foreach ($events as $event) {
-            if ($resource === (string) $event->getResource()) {
+            if ($resource === (string) $event->getResource()->getResource()) {
                 $result[] = $event->getType();
             }
         }
