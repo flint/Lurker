@@ -1,5 +1,6 @@
 site_name: Lurker
 theme: readthedocs
+repo_url: https://github.com/flint/Lurker
 
 markdown_extensions:
   - toc:
