@@ -1,2 +1,6 @@
 site_name: Lurker
 theme: readthedocs
+
+markdown_extensions:
+  - toc:
+      permalink: true
