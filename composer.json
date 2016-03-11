@@ -22,8 +22,8 @@
 
     "require" : {
         "php"                      : ">=5.3.3",
-        "symfony/config"           : "~2.2",
-        "symfony/event-dispatcher" : "~2.2"
+        "symfony/config"           : "^2.2|^3.0",
+        "symfony/event-dispatcher" : "^2.2|^3.0"
     },
 
     "autoload" : {
