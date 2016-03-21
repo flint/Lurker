@@ -31,12 +31,15 @@
     },
 
     "suggest" : {
-        "ext-inotify": ">=0.1.6"
+        "ext-inotify": ">=0.1.6",
+        "symfony/console": "~2.2"
     },
 
     "extra" : {
         "branch-alias" : {
             "dev-master" : "1.0.x-dev"
         }
-    }
+    },
+    
+    "bin":["lurker.php"]
 }
