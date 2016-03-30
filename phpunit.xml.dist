@@ -8,6 +8,9 @@
          stopOnFailure="false"
          syntaxCheck="false"
          strict="true"
+         timeoutForSmallTests="10"
+         timeoutForMediumTests="20"
+         timeoutForLargeTests="30"
          bootstrap="tests/bootstrap.php">
 
     <testsuites>
