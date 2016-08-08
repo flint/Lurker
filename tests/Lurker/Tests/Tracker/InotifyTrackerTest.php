@@ -57,8 +57,8 @@ class InotifyTrackerTest extends TrackerTest
         mkdir($subdir = $dir.'/subdir');
         touch($file = $dir.'/file');
 
-        $tracker->track(new TrackedResource('foo', $resource = new FileResource($foo)));
-        $tracker->track(new TrackedResource('dir', $resource = new DirectoryResource($dir)));
+        $tracker->track(new TrackedResource('foo', new FileResource($foo)));
+        $tracker->track(new TrackedResource('dir', new DirectoryResource($dir)));
 
         unlink($foo);
         touch($foo);
@@ -75,7 +75,7 @@ class InotifyTrackerTest extends TrackerTest
         mkdir($subdir);
 
         $events = $tracker->getEvents();
-        $this->assertCount(0, $events);
+        $this->assertCount(2, $events);
     }
 
     public function testNewResourceDeletionCreationTriggersNoEvents()
@@ -208,13 +208,13 @@ class InotifyTrackerTest extends TrackerTest
         mkdir($subdir = $dir.'/subdir');
         touch($subfile = $subdir.'/subfile');
 
-        $tracker->track(new TrackedResource('dir', $resource = new DirectoryResource($dir)));
+        $tracker->track(new TrackedResource('dir', new DirectoryResource($dir)));
 
         rename($file, $file_new = $file.'_new');
         rename($subdir, $subdir_new = $subdir.'_new');
 
         $events = $tracker->getEvents();
-        $this->assertCount(6, $events);
+        $this->assertCount(4, $events);
         $this->assertHasResourceEvent($file_new, FilesystemEvent::CREATE, $events);
         $this->assertHasResourceEvent($file, FilesystemEvent::DELETE, $events);
         $this->assertHasResourceEvent($subdir_new, FilesystemEvent::CREATE, $events);
