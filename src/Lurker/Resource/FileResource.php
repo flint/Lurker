@@ -2,13 +2,50 @@
 
 namespace Lurker\Resource;
 
-use Symfony\Component\Config\Resource\FileResource as BaseFileResource;
+use Lurker\Exception\InvalidArgumentException;
 
 /**
  * @package Lurker
  */
-class FileResource extends BaseFileResource implements ResourceInterface
+class FileResource implements ResourceInterface
 {
+    /**
+     * @var string
+     */
+    private $resource;
+
+    /**
+     * @param string $resource
+     */
+    public function __construct($resource)
+    {
+        $this->resource = realpath($resource);
+
+        if (false === $this->resource && file_exists($resource)) {
+            $this->resource = $resource;
+        }
+
+        if (false === $this->resource) {
+            throw new InvalidArgumentException(sprintf('The file "%s" does not exist.', $resource));
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->resource;
+    }
+
     public function getModificationTime()
     {
         if (!$this->exists()) {
