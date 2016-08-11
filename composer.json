@@ -29,6 +29,9 @@
     "autoload" : {
         "psr-0" : { "Lurker": "src" }
     },
+    "autoload-dev": {
+        "psr-0" : { "Lurker\\Tests": "tests" }
+    },
 
     "suggest" : {
         "ext-inotify": ">=0.1.6"
