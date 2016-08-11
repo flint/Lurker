@@ -2,13 +2,60 @@
 
 namespace Lurker\Resource;
 
-use Symfony\Component\Config\Resource\DirectoryResource as BaseDirectoryResource;
+use Lurker\Exception\InvalidArgumentException;
 
 /**
  * @package Lurker
  */
-class DirectoryResource extends BaseDirectoryResource implements ResourceInterface
+class DirectoryResource implements ResourceInterface
 {
+    /**
+     * @var string
+     */
+    private $resource;
+
+    /**
+     * @var string|null
+     */
+    private $pattern;
+
+    /**
+     * @param string $resource
+     * @param string|null $pattern
+     */
+    public function __construct($resource, $pattern = null)
+    {
+        $this->resource = realpath($resource);
+        $this->pattern = $pattern;
+
+        if (false === $this->resource || !is_dir($this->resource)) {
+            throw new InvalidArgumentException(sprintf('The directory "%s" does not exist.', $resource));
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPattern()
+    {
+        return $this->pattern;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return md5(serialize(array($this->resource, $this->pattern)));
+    }
 
     public function exists()
     {
