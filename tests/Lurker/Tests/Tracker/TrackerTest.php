@@ -30,17 +30,16 @@ abstract class TrackerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Lurker\Exception\InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testDoesNotTrackMissingFiles()
     {
         $tracker = $this->getTracker();
-
-        $tracker->track(new TrackedResource('missing', new FileResource(__DIR__.'/missingfile')));
+        $tracker->track(new TrackedResource('missing', new FileResource(__DIR__ . '/missingfile')));
     }
 
     /**
-     * @expectedException Lurker\Exception\InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testDoesNotTrackMissingDirectories()
     {
