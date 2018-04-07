@@ -2,7 +2,6 @@ language: php
 
 sudo: false
 
-
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -12,6 +11,8 @@ php:
   - 5.5
   - 5.6
   - 7.0
+  - 7.1
+  - 7.2
   - hhvm
 
 matrix:
@@ -27,3 +28,6 @@ before_script:
   - "if [ \"$INOTIFY_EXTENSION\" = \"1\" ]; then pyrus install pecl/inotify && pyrus build pecl/inotify; fi"
   - "if [ \"$INOTIFY_EXTENSION\" = \"1\" ]; then echo \"extension=inotify.so\" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi"
   - "composer install --no-progress"
+
+script:
+  - "vendor/bin/phpunit"
